@@ -26,7 +26,7 @@ public class StateCensusAnalyser {
 		} catch (NoSuchFileException e) {
 			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.NO_SUCH_FILE, "No such file exits");
 		} catch (RuntimeException e) {
-			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, "Incorrect delimiter or Incorrect header");
+			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, "Incorrect delimiter or Incorrect file extention or Incorrect header");
 		} catch (IOException e) {
 			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.IO_EXCEPTION,
 					"IO related exception");

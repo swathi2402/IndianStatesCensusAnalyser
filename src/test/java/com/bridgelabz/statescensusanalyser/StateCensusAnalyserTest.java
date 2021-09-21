@@ -7,6 +7,7 @@ public class StateCensusAnalyserTest {
 
 	public static final String CSV_FILE_PATH = "./StateCensus.csv";
 	public static final String NO_FILE = "./StateCensu.csv";
+	public static final String WRONG_FILE = "./State.json";
 
 	@Test
 	public void GivenStateCensusCsvFile_IfHasCorrectNumberOfRecords_ShouldReturnTrue() {
@@ -22,6 +23,16 @@ public class StateCensusAnalyserTest {
 			StateCensusAnalyser.loadDataToIterator(NO_FILE);
 		} catch (CensusAnalyserException e) {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.NO_SUCH_FILE, e.type);
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void GivenStateCensusCSVFile_TypeIncorrect_ReturnsCensusAnalyserException() {
+		try {
+			StateCensusAnalyser.loadDataToIterator(WRONG_FILE);
+		} catch (CensusAnalyserException e) {
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, e.type);
 			System.out.println(e.getMessage());
 		}
 	}
