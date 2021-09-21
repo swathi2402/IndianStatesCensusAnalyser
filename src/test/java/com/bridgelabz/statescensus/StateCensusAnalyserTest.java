@@ -98,4 +98,14 @@ public class StateCensusAnalyserTest {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void GivenStateCodeCSVFile_IncorrectHeader_ReturnsCensusAnalyserException() {
+		try {
+			StateCensusAnalyser.loadDataToIterator(CSV_STATECODE_PATH, CSVStateCensus.class);
+		} catch (CensusAnalyserException e) {
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, e.type);
+			System.out.println(e.getMessage());
+		}
+	}
 }
