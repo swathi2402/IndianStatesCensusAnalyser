@@ -11,7 +11,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class StateCensusAnalyser {
 
-	public static int loadDataToIterator(String csvFilePath) throws IOException {
+	public static int loadDataToIterator(String csvFilePath) throws CensusAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
 
 			CsvToBeanBuilder<CSVStateCensus> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
@@ -21,6 +21,9 @@ public class StateCensusAnalyser {
 
 			List<CSVStateCensus> myIterator = csvToBean.parse();
 			return myIterator.size();
+
+		} catch (IOException e) {
+			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.NO_SUCH_FILE, "No such file exits");
 		}
 	}
 
