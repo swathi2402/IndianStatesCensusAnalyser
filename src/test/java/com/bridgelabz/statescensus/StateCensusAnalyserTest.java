@@ -72,7 +72,7 @@ public class StateCensusAnalyserTest {
 	@Test
 	public void GivenStateCodeCsvFile_IfInCorrect_ShouldThrowException() {
 		try {
-			StateCensusAnalyser.loadDataToIterator(NO_FILE, CSVStateCensus.class);
+			StateCensusAnalyser.loadDataToIterator(NO_FILE, CSVStateCode.class);
 		} catch (CensusAnalyserException e) {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.NO_SUCH_FILE, e.type);
 			System.out.println(e.getMessage());
@@ -82,7 +82,7 @@ public class StateCensusAnalyserTest {
 	@Test
 	public void GivenStateCodeCSVFile_TypeIncorrect_ReturnsCensusAnalyserException() {
 		try {
-			StateCensusAnalyser.loadDataToIterator(WRONG_FILE, CSVStateCensus.class);
+			StateCensusAnalyser.loadDataToIterator(WRONG_FILE, CSVStateCode.class);
 		} catch (CensusAnalyserException e) {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, e.type);
 			System.out.println(e.getMessage());
@@ -92,7 +92,7 @@ public class StateCensusAnalyserTest {
 	@Test
 	public void GivenStateCodeCSVFile_WithDelimiterIncorrect_ReturnsCensusAnalyserException() {
 		try {
-			StateCensusAnalyser.loadDataToIterator(CSV_STATECODE_PATH, CSVStateCensus.class);
+			StateCensusAnalyser.loadDataToIterator(CSV_STATECODE_PATH, CSVStateCode.class);
 		} catch (CensusAnalyserException e) {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, e.type);
 			System.out.println(e.getMessage());
@@ -102,7 +102,7 @@ public class StateCensusAnalyserTest {
 	@Test
 	public void GivenStateCodeCSVFile_IncorrectHeader_ReturnsCensusAnalyserException() {
 		try {
-			StateCensusAnalyser.loadDataToIterator(CSV_STATECODE_PATH, CSVStateCensus.class);
+			StateCensusAnalyser.loadDataToIterator(CSV_STATECODE_PATH, CSVStateCode.class);
 		} catch (CensusAnalyserException e) {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.TYPE_INCORRECT, e.type);
 			System.out.println(e.getMessage());
